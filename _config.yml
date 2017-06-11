@@ -12,7 +12,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://MorningHi/MorningHi.github.io
+url: https://MorningHi.github.io/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -71,6 +71,6 @@ deploy:
   #l类型
   type: git
   #仓库
-  repo: git@github.com:MorningHi/MorningHi.github.io.git
+  repo: git@github.com:MorningHi/MorningHi.github.io
   #分支
   branch: master
