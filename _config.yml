@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: Rezero
 subtitle:
 description:
-author: John Doe
+author: Rezero
 language:
 timezone:
 
@@ -71,6 +71,6 @@ deploy:
   #l类型
   type: git
   #仓库
-  repo: git@github.com:MorningHi/MorningHi.github.io
+  repo: git@github.com:MorningHi/MorningHi.github.io.git
   #分支
   branch: master
