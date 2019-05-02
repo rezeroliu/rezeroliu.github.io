@@ -6,7 +6,7 @@
 favicon: /favicon.ico
 
 # Set default keywords (Use a comma to separate)
-keywords: "Hexo, NexT"
+keywords: "Code, Thought, and Life"
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
@@ -39,7 +39,6 @@ seo: false
 menu:
   home: /
   #categories: /categories
-  #about: /about
   archives: /archives
   tags: /tags
   about: /about
@@ -73,8 +72,8 @@ menu_icons:
 
 # Schemes
 scheme: Muse
-#scheme: Mist
-#scheme: Pisces
+# scheme: Mist
+# scheme: Pisces
 
 
 # ---------------------------------------------------------------
@@ -134,8 +133,10 @@ font:
 # Social Links
 # Key is the link label showing to end users.
 # Value is the target link (E.g. GitHub: https://github.com/iissnan)
-#social:
-  #LinkLabel: Link
+social:
+  #LinkLabel: Link  
+  GitHub: "https://github.com/MorningHi/MorningHi.github.io"
+  Weibo: "http://weibo.com/u/5288757349"
 
 
 # Social Links Icons
@@ -155,7 +156,7 @@ social_icons:
 # Sidebar Avatar
 # in theme directory(source/images): /images/avatar.jpg
 # in site  directory(source/uploads): /uploads/avatar.jpg
-#avatar:
+avatar: /images/kaka.jpg
 
 
 # Table Of Contents in the Sidebar
@@ -175,17 +176,17 @@ toc:
 
 sidebar:
   # Sidebar Position, available value: left | right
-  position: left
-  #position: right
+  # position: left
+  position: right
 
   # Sidebar Display, available value:
   #  - post    expand on posts automatically. Default.
   #  - always  expand for all pages automatically
   #  - hide    expand only when click on the sidebar toggle icon.
   #  - remove  Totally remove sidebar including sidebar toggle.
-  display: post
+  # display: post
   #display: always
-  #display: hide
+  display: hide
   #display: remove
 
   # Sidebar offset from top menubar in pixels.
@@ -220,8 +221,8 @@ excerpt_description: true
 # Automatically Excerpt. Not recommend.
 # Please use <!-- more --> in the post to control excerpt accurately.
 auto_excerpt:
-  enable: false
-  length: 150
+  enable: true
+  length: 100
 
 # Post meta display settings
 post_meta:
