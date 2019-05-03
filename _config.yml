@@ -89,3 +89,7 @@ deploy:
 feed:
    type: atom
    path: atom.xml
+   
+# Extensions
+## Plugins: http://hexo.io/plugins/
+plugins: hexo-generate-feed

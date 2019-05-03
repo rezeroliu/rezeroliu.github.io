@@ -3,7 +3,7 @@
 # ---------------------------------------------------------------
 
 # Put your favicon.ico into `hexo-site/source/` directory.
-favicon: /favicon.ico
+favicon: /images/favicon.ico
 
 # Set default keywords (Use a comma to separate)
 keywords: "Code, Thought, and Life"
@@ -11,7 +11,7 @@ keywords: "Code, Thought, and Life"
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
 # Set rss to specific value if you have burned your feed already.
-rss:
+rss:  /atom.xml
 
 # Specify the date when the site was setup
 since: 2017
@@ -71,8 +71,8 @@ menu_icons:
 # ---------------------------------------------------------------
 
 # Schemes
-scheme: Muse
-# scheme: Mist
+# scheme: Muse
+scheme: Mist
 # scheme: Pisces
 
 
@@ -137,6 +137,7 @@ social:
   #LinkLabel: Link  
   GitHub: "https://github.com/MorningHi/MorningHi.github.io"
   Weibo: "http://weibo.com/u/5288757349"
+  CSDN: "https://blog.csdn.net/Lucky_Go"
 
 
 # Social Links Icons
@@ -149,8 +150,9 @@ social_icons:
   # Icon Mappings.
   # KeyMapsToSocialItemKey: NameOfTheIconFromFontAwesome
   GitHub: github
-  Twitter: twitter
+  # Twitter: twitter
   Weibo: weibo
+  CSND: bullseye
 
 
 # Sidebar Avatar
