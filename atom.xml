@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://MorningHi.github.io/"/>
-  <updated>2019-08-03T07:08:57.157Z</updated>
+  <updated>2019-08-20T02:27:27.810Z</updated>
   <id>https://MorningHi.github.io/</id>
   
   <author>
@@ -17,40 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>快速排序算法——python实现</title>
-    <link href="https://MorningHi.github.io/2018/11/10/quickSort/"/>
-    <id>https://MorningHi.github.io/2018/11/10/quickSort/</id>
-    <published>2018-11-10T09:11:36.000Z</published>
-    <updated>2019-08-03T07:08:57.157Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>快速排序的思想</strong></p><p>首先在数组中任意选取一个数（通常选第一个数）作为标志数据，通过比较将有比它小的数全放到它前面，比它大的数全放到它后面，这样完成一趟排序。</p><p>一趟排序的流程为：</p><ol><li>初始时i=0, j=N-1。其中N为数组长度；</li><li>选择标志数据key，通常设置key = Array[0]；</li><li>从数组尾部向前遍历（j - -），找到第一个比key小的数A[j]，交换A[i]和A[j]的位置；</li><li>从数组首部向后遍历（i ++），找到第一个比key大的数A[i]，交换A[i]和A[j]的位置；</li><li>重复步骤3和4直到i=j。</li></ol><p>一趟排序之后标志数据将数组分成了左右两部分，左边的数应当都小于它而右边的数都比它大。再利用递归的思想，对左右两部分分别进行同样的操作，最终实现对数组的排序。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#快速排序的递归实现</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quickSort</span><span class="params">(arr, low, high)</span>:</span></span><br><span class="line">    i = low</span><br><span class="line">    j = high</span><br><span class="line">    <span class="keyword">if</span> i &gt;= j:</span><br><span class="line">        <span class="keyword">return</span> arr</span><br><span class="line">    key = arr[i]       <span class="comment">#设置标志数据</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; j:</span><br><span class="line">    <span class="comment">#从尾部向前遍历，找到第一个比key小的数</span></span><br><span class="line">        <span class="keyword">while</span> arr[j] &gt;= key <span class="keyword">and</span> i &lt; j:   </span><br><span class="line">            j = j - <span class="number">1</span></span><br><span class="line">        arr[i] = arr[j] </span><br><span class="line">        <span class="comment">#从首部部向前遍历，找到第一个比key大的数  </span></span><br><span class="line">        <span class="keyword">while</span> arr[i] &lt;= key <span class="keyword">and</span> j &gt; i:</span><br><span class="line">            i = i + <span class="number">1</span></span><br><span class="line">        arr[j] = arr[i]</span><br><span class="line">    arr[i] = key</span><br><span class="line">    <span class="comment">#一轮之后数组分成了左右两部分，用同样的思想分别进行递归</span></span><br><span class="line">    quickSort(arr, low, i<span class="number">-1</span>)</span><br><span class="line">    quickSort(arr, i+<span class="number">1</span>, high)</span><br><span class="line"></span><br><span class="line"><span class="comment">#测试函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    Arr = [<span class="number">7</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">80</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">19</span>, <span class="number">8</span>, <span class="number">11</span>, <span class="number">23</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">53</span>, <span class="number">27</span>, <span class="number">9</span>, <span class="number">20</span>]</span><br><span class="line">    quickSort(Arr, <span class="number">0</span>, len(Arr) - <span class="number">1</span>)</span><br><span class="line">    print(Arr)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure><p>快速排序算法的平均时间复杂度为O(nlgn)，标志数据的位置选择会影响算法的效率，最坏情况下时间复杂度可能为O(N^2)。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;快速排序的思想&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;首先在数组中任意选取一个数（通常选第一个数）作为标志数据，通过比较将有比它小的数全放到它前面，比它大的数全放到它后面，这样完成一趟排序。&lt;/p&gt;
-&lt;p&gt;一趟排序的流程为：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;初始时i=0
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="https://MorningHi.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="排序" scheme="https://MorningHi.github.io/tags/%E6%8E%92%E5%BA%8F/"/>
-    
-  </entry>
-  
-  <entry>
     <title>回环变位(Circular Rotation)</title>
     <link href="https://MorningHi.github.io/2018/08/13/circularRotation/"/>
     <id>https://MorningHi.github.io/2018/08/13/circularRotation/</id>
     <published>2018-08-13T05:21:24.000Z</published>
-    <updated>2019-08-03T07:06:55.816Z</updated>
+    <updated>2019-08-20T02:27:27.810Z</updated>
     
     <content type="html"><![CDATA[<p><strong>回环变位</strong>：如果字符串s中的字符循环移动任意位置之后能够得到另一个字符串 t，那么 s 称为 t 的回环变位(Circular Rotation)。例如，”ACTGACG” 就是 “TGACGAC” 的一个回环变位。</p><h3 id="一般的实现思想"><a href="#一般的实现思想" class="headerlink" title="一般的实现思想"></a>一般的实现思想</h3><blockquote><p>利用循环的方式遍历字符串t,从循环次数i处将字符串t分成两个字串后交换顺序拼接成一个新的字符串，比较新的s和新的字符串是否相等。</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isCircularRotation1</span><span class="params">(String s, String t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(s.length() != t.length())   <span class="comment">//字符串长度不等则没必要再比较，直接返回false</span></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">int</span> N = s.length();</span><br><span class="line">System.out.println(N);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;=N; i++)</span><br><span class="line">&#123;</span><br><span class="line">String subT1 = t.substring(<span class="number">0</span>, i);     <span class="comment">//在索引i处分割字符串t</span></span><br><span class="line">String subT2 = t.substring(i, N);</span><br><span class="line"><span class="keyword">if</span>(s.equals(subT2 + subT1))    <span class="comment">//交换顺序连接分割后的字串</span></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="让代码简单点"><a href="#让代码简单点" class="headerlink" title="让代码简单点"></a>让代码简单点</h3><p>《算法》(Algorithms)这本书的习题中关于回环变位给了这么一行提示：答案只需要一行用到 indexOf()、length() 和字符串连接的代码。</p><blockquote><p>怎么实现呢？——将 t 和 t 自身连接，这样如果 t 是 s 的回环变位，那么s肯定是 “t+t” 的一个子串！</p></blockquote><p>方法如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isCircularRotation</span><span class="params">(String s, String t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">return</span> (s.length() == t.length()) &amp;&amp; ((t + t).indexOf(s) &gt; <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>其中关于字符串对象的方法的具体使用可以参考 javaAPI文档，里面介绍的很详细。</p>]]></content>
     
