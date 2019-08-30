@@ -50,7 +50,7 @@ h6 {
   color: #303030;
 }
 h1 {
-  font-size: 2em;
+  font-size: 2.25em;
 }
 h2 {
   font-size: 1.5em;
@@ -519,23 +519,24 @@ pre {
 .post-content {
   font: 400 16px/1.62 "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
   color: #333;
+  font-style: bold;
 }
 .post-content h1 {
   font-family: "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", "SimSun", sans-serif;
   color: #333;
   font-size: 1.8em;
-  margin: 0.67em 0;
+  margin: 0.6em 0 0.5em 0;
 }
 .post-content h2 {
   font-family: "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", "SimSun", sans-serif;
   color: #333;
-  font-size: 1.5em;
-  margin: 0.83em 0;
+  font-size: 1.7em;
+  margin: 0.88em 0 0.6em 0;
 }
 .post-content h3 {
   font-family: "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", "SimSun", sans-serif;
   color: #333;
-  font-size: 1.17em;
+  font-size: 1.35em;
   margin: 1em 0;
 }
 .post-content h4 {
@@ -593,6 +594,7 @@ pre {
 }
 .post-content figure {
   position: relative;
+  max-height: 800px;
   clear: both;
   outline: 0;
   margin: 10px 0;
@@ -726,7 +728,7 @@ pre {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  table-layout: fixed;
+  table-layout: auto;
   word-wrap: break-word;
 }
 .post-content th {
@@ -1071,11 +1073,17 @@ pre {
   padding-top: 1em;
   background-color: #fff;
   top: 0;
-  bottom: 70px;
+  bottom: auto;
   overflow-y: auto;
 }
 #article-toc ol {
-  list-style: none;
+    display: block;
+    list-style-type: none;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 15px;
 }
 #article-toc .toc {
   padding-left: 2em;
@@ -1084,7 +1092,7 @@ pre {
   display: block;
   color: #333;
   text-decoration: none;
-  padding: 4px 0;
+  padding: 4px 0 2px 0;
   line-height: 1.25em;
   position: relative;
   width: 100%;
@@ -1092,6 +1100,7 @@ pre {
   overflow: hidden;
   white-space: nowrap;
 }
+
 #article-toc .toc .toc-item .toc-link:hover {
   color: #1BA6E7;
   -webkit-transition: 0.15s;
@@ -1341,9 +1350,9 @@ pre,
   overflow: auto;
   margin: 20px 0;
   padding: 0;
-  color: #c5c8c6;
-  font-size: 13px;
-  background: #1d1f21;
+  color: #ebebeb;
+  font-size: 14px;
+  background: #ebebeb;
   line-height: 1.6;
 }
 code {
@@ -1355,7 +1364,7 @@ code {
   background: #eee;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
-  border-radius: 3px;
+  border-radius: 2px;
 }
 pre code {
   padding: 0;
@@ -1381,7 +1390,6 @@ pre .comment {
 }
 .highlight table {
   margin: 0;
-  width: auto;
   border: none;
 }
 .highlight td {
@@ -1488,7 +1496,7 @@ pre .javascript .function {
 ====================================================*/
 ::-webkit-scrollbar {
   -webkit-appearance: none;
-  height: 5px;
+  height: 8px;
   width: 5px;
 }
 ::-webkit-scrollbar-track {
@@ -1498,7 +1506,7 @@ pre .javascript .function {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-  background-color: rgba(1, 1, 1, 0.12);
+  background-color: #ccc;
 }
 ::-webkit-scrollbar-thumb:hover {
   background-color: rgba(1, 1, 1, 0.22);
