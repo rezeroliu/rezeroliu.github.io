@@ -18,12 +18,10 @@
     <link rel="dns-prefetch" href="https://MorningHi.github.io">
     <!--SEO-->
 
-    <meta name="keywords" content="java,排序算法">
+    <meta name="keywords" content="标签1,标签2">
 
 
-    <meta name="description" content="定义&emsp;&emsp;排序 是计算机内部经常进行的一项操作，目的是将一组无序的序列调整为一组有序的序列。Excel中将数据按照名称进行升序降序排列就是一种常见的排序操作。
-相关概念
-时间复...">
+    <meta name="description" content>
 
 
 
@@ -35,7 +33,7 @@
     <!--Title-->
 
 
-<title>十大排序算法总结 | Something for Nothing</title>
+<title>binarySearchTree | Something for Nothing</title>
 
 
     <link rel="alternate" href="/atom.xml" title="Something for Nothing" type="application/atom+xml">
@@ -132,40 +130,15 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="十大排序算法总结">
+        <h1 id="binarySearchTree">
             
-	            十大排序算法总结
+	            binarySearchTree
             
         </h1>
     </div>
     
     <div class="post-body post-content">
-        <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>&emsp;&emsp;<strong>排序</strong> 是计算机内部经常进行的一项操作，目的是将一组无序的序列调整为一组有序的序列。Excel中将数据按照名称进行升序降序排列就是一种常见的排序操作。</p>
-<h2 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h2><ul>
-<li><strong>时间复杂度</strong>：反映操作次数(计算量)随数据长度的变化规律，是数据规模的函数，用$O(·)$表示。</li>
-<li><strong>空间复杂度</strong>：用来度量执行算法所需的存储空间随数据规模的变化情况，也用$O(·)$表示。</li>
-<li><strong>稳定性</strong>：对于两个相等的元素 $a$ 和 $b$，如果排序算法不会改变他们的相对位置，则称排序算法是稳定的，否则这个算法就是不稳定的。</li>
-</ul>
-<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>&emsp;&emsp;根据排序过程是<strong>否需要使用外部存储空间</strong>可以将排序算法分为<strong>内部排序</strong>和<strong>外部排序</strong>。</p>
-<p>&emsp;&emsp;根据排序算法的<strong>复杂度</strong>和是否是<strong>基于对元素进行比较</strong>进行排序又可以将算法分为<strong>非线性时间比较类排序</strong>和<strong>线性时间非比较类排序</strong>。</p>
-<ul>
-<li><strong>非线性时间比较类排序</strong>：顾名思义就是根据比较来确定元素的排列顺序的排序算法，时间复杂度最低为$(O(nlogn))$</li>
-<li><strong>线性时间非比较类排序</strong>：不通过比较元素的相对大小来确定元素的排列顺序的算法，时间复杂度可以突破对数级别以线性时间运行。</li>
-</ul>
-<p><img src="https://github.com/MorningHi/ImgRepository/raw/master/Hexoblog/sort/classes.png" style="zoom:90%"></p>
-<h2 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h2><p><img src="https://github.com/MorningHi/ImgRepository/raw/master/Hexoblog/sort/comparison.png" style="zoom:70%"></p>
-<p>&emsp;&emsp;表中 $k$ 表示所需的桶(bucket)的个数——对于计数排序、桶排序和基数排序三种排序算法需要额外的<strong>“buckets”</strong>来辅助排序。</p>
-<h2 id="具体算法介绍"><a href="#具体算法介绍" class="headerlink" title="具体算法介绍"></a>具体算法介绍</h2><p>下面具体介绍了每一种排序算法：</p>
-<p>(1)  <a href="https://morninghi.github.io/2019/08/20/SelectionSort/">简单选择排序</a></p>
-<p>(2)  <a href="https://morninghi.github.io/2019/08/20/bubbleSort/">冒泡排序</a></p>
-<p>(3)  <a href="https://morninghi.github.io/2019/08/21/InsertionSort/">插入排序</a></p>
-<p>(4)  <a href="https://morninghi.github.io/2019/08/22/ShellSort/">希尔排序</a></p>
-<p>(5)  <a href="https://morninghi.github.io/2019/08/23/MergeSort/">归并排序</a></p>
-<p>(6)  <a href="https://morninghi.github.io/2019/08/23/QuickSort/">快速排序</a></p>
-<p>(7)  <a href="https://morninghi.github.io/2019/08/24/HeapSort/">堆排序</a></p>
-<p>(8)  <a href="https://morninghi.github.io/2019/08/26/CountingSort/">计数排序/桶排序/基数排序</a></p>
-<p>&emsp;&emsp;所有的排序都默认是按照从大到小的顺序进行排序，完整的代码可以在<a href="https://github.com/MorningHi/Algorithms-Edition4/tree/master/sort" target="_blank" rel="noopener">我的github</a>上下载。此外，文章中的所有演示动图都来自于互联网。</p>
-
+        
     </div>
     
     <div class="post-footer">
@@ -182,15 +155,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2019/09/22/binarySearchTree/" class="pre-post btn btn-default" title="binarySearchTree">
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">binarySearchTree</span>
-        </a>
     
-    
-        <a href="/2019/08/26/CountingSort/" class="next-post btn btn-default" title="计数排序/桶排序/基数排序">
+        <a href="/2019/08/29/sort/" class="next-post btn btn-default" title="十大排序算法总结">
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">计数排序/桶排序/基数排序</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">十大排序算法总结</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -206,7 +174,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关概念"><span class="toc-text">相关概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分类"><span class="toc-text">分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#比较"><span class="toc-text">比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体算法介绍"><span class="toc-text">具体算法介绍</span></a></li></ol>
+            <p>暂无目录</p>
         
     </div>
 </aside>
@@ -228,42 +196,6 @@
 
 
 <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
-
-<!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    "HTML-CSS": { 
-        preferredFont: "TeX", 
-        availableFonts: ["STIX","TeX"], 
-        linebreaks: { automatic:true }, 
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) 
-    },
-    tex2jax: { 
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ], 
-        processEscapes: true, 
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {  
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, 
-        Macros: { href: "{}" } 
-    },
-    messageStyle: "none"
-    }); 
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
 
 
     <div class="copyright">
