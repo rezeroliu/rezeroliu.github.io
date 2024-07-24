@@ -1,0 +1,328 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Something for Nothing">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://MorningHi.github.io">
+    <!--SEO-->
+
+    <meta name="keywords" content="排序,java">
+
+
+    <meta name="description" content="基本思想&emsp;&emsp;堆排序是基于堆这种数据结构的一种排序方法。首先将待排序的数组(或序列)构造成完全二叉树，然后利用完全二叉树中父节点和孩子节点之间的关系，每次从当前二叉树中找出最大...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>堆排序 | Something for Nothing</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="Something for Nothing" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Rezero">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 窗台边渴死的蚂蚱，翅膀上开出了金色的花 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://MorningHi.github.io">Something for Nothing</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa fa-home"></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa fa-archive"></i>时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about"><i class="fa fa-user"></i>关于</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="堆排序">
+            
+	            堆排序
+            
+        </h1>
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h2><p>&emsp;&emsp;堆排序是基于<strong>堆</strong>这种数据结构的一种排序方法。首先将待排序的数组(或序列)构造成<strong>完全二叉树</strong>，然后利用完全二叉树中父节点和孩子节点之间的关系，每次从当前二叉树中找出最大节点并将其移出未排序部分，达到排序的目的。首先介绍一下一些相关概念：</p>
+<ul>
+<li><p><strong>完全二叉树</strong>：对于一棵深度为 $h$ 的二叉树，如果除了最后一层外，其他每层的节点数都达到最大，且第 $h$ 层的节点都连续集中在最左边，那么这就是一棵完全二叉树，如下图所示：</p>
+<center><img src="https://github.com/MorningHi/ImgRepository/raw/master/Hexoblog/sort/wanquan.jpg"></center>
+</li>
+<li><p><strong>堆</strong>：这里完整的叫法应当是二叉堆，它是一棵堆有序的完全二叉树。堆分为<strong>最大堆和最小堆</strong>，对于最大堆来说所有的父节点均大于等于两个孩子节点的值，因此根节点应当是最大值节点；相反，对于最小堆，所有的父节点均小于等于子节点的值，因此最小堆的根节点是最小值节点。</p>
+</li>
+<li><p><strong>堆的顺序存储结构</strong>：堆是一棵完全二叉数，因此用数组这种顺序存储结构就可以表示：</p>
+<p>①：按层序遍历的顺序在数组中存放堆的元素，下标0表示的元素是根节点，其子节点分别为下标1和下标2……依次类推；</p>
+<p>②：节点 $i$ 如果存在左孩子，左孩子的下标为 $2i+1$；如果存在右孩子，右孩子的下标为 $2i+2$。</p>
+</li>
+</ul>
+<h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><p>这里以一个长度为 $n$ 的数列arr为例</p>
+<ol>
+<li>首先将待排序数组构建成一个堆，此时根节点(arr[0])应当为最大值，整个数组都处于<strong>无序区</strong>；</li>
+<li>将堆中最大的元素移出。具体做法就是交换数组第一个元素 arr[0] 和 最后一个元素arr[n-1]，交换之后 arr[n-1] 位于<strong>有序区</strong>，不再参与后面的排序，此时无序区由 {arr[0]~arr[n-2]} 组成；</li>
+<li>第二步之后，无序区的元素排列是违反堆的规则的，因此要重新对无序区进行调整得到一个包含  {arr[0]~arr[n-2]} 的新堆，然后交换 arr[0] 和 最后一个元素arr[n-2]， 并且将arr[n-2] 移到有序区，接下来对剩余元素重复相同的操作直至排序完成。</li>
+</ol>
+<h2 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h2><p><center><img src="https://github.com/MorningHi/ImgRepository/raw/master/Hexoblog/sort/HeapSort.gif"></center></p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>堆排序中，关键的一个操作就是每次调整无序区的元素使其满足堆的规则，这个操作通过adjust()函数实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">adjust</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> i, <span class="keyword">int</span> N)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">2</span>*i+<span class="number">1</span> &lt; N)&#123;</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">2</span> * i + <span class="number">1</span>; <span class="comment">// 当前节点左孩子结点的索引</span></span><br><span class="line">        <span class="keyword">if</span>(j+<span class="number">1</span> &lt; N &amp;&amp; (arr[j] &lt; arr[j+<span class="number">1</span>]))   j++;   <span class="comment">// 找到最大的孩子节点</span></span><br><span class="line">        <span class="keyword">if</span>(arr[i] &gt;= arr[j])   <span class="keyword">break</span>;   <span class="comment">// 表明根节点大于等于所有的孩子节点，不用交换</span></span><br><span class="line">        <span class="keyword">int</span> temp = arr[i];  <span class="comment">// 交换最大孩子节点和根节点</span></span><br><span class="line">        arr[i] = arr[j];</span><br><span class="line">        arr[j] = temp;</span><br><span class="line">        i = j;   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>排序函数如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">heap_sort</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 数组为空或者长度为1不需要排序</span></span><br><span class="line">        <span class="keyword">if</span>(arr == <span class="keyword">null</span> || arr.length &lt; <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> N = arr.length;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = N/<span class="number">2</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">            adjust(arr, i, N);  <span class="comment">// 通过调整使得初始堆有序</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 交换根节点(保存着最大元素)和最后一个孩子节点，并从堆中删除</span></span><br><span class="line">        <span class="keyword">while</span>(N-- &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> temp = arr[N];</span><br><span class="line">            arr[N] = arr[<span class="number">0</span>];</span><br><span class="line">            arr[<span class="number">0</span>] = temp;</span><br><span class="line">            adjust(arr, <span class="number">0</span>, N);  <span class="comment">// 重新调整数组使得堆有序</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>说明：首先对于原数组进行调整使得初始堆有序，然后通过while循环里的语句，首先交换当前堆中第一个元素和最后一个元素，并将最后一个元素移出堆(通过N—实现)，再重新调整堆使其有序。</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ul>
+<li><p><strong>时间复杂度</strong></p>
+<p>堆排序遍历的次数就是由初始元素构成的完全二叉树的深度，其时间复杂度为 $O(n)$，最好和最差情况下也都为 $O(n)$。</p>
+</li>
+<li><p><strong>空间复杂度</strong></p>
+<p>堆排序使用的额外空间跟数组长度无关，因此空间复杂度是 $O(1)$。</p>
+</li>
+<li><p><strong>稳定性</strong></p>
+<p>如果存在重复元素，堆排序在交换堆顶元素和最后一个元素的时候，可能将原本靠后的元素前移，造成相同元素相对顺序的改变，因此堆排序是不稳定的。</p>
+</li>
+</ul>
+<p>堆排序是目前唯一能够同时最优地利用时间和空间的排序方法。</p>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><blockquote>
+<ol>
+<li><a href="https://www.jianshu.com/p/47170b1ced23" target="_blank" rel="noopener">一文搞定十大经典排序算法</a></li>
+<li>《算法(第四版)》</li>
+</ol>
+</blockquote>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">Rezero</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2019/08/26/CountingSort/" class="pre-post btn btn-default" title="计数排序/桶排序/基数排序">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">计数排序/桶排序/基数排序</span>
+        </a>
+    
+    
+        <a href="/2019/08/23/QuickSort/" class="next-post btn btn-default" title="快速排序">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">快速排序</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本思想"><span class="toc-text">基本思想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法流程"><span class="toc-text">算法流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#演示"><span class="toc-text">演示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-text">分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文献"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+<!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": { 
+        preferredFont: "TeX", 
+        availableFonts: ["STIX","TeX"], 
+        linebreaks: { automatic:true }, 
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) 
+    },
+    tex2jax: { 
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ], 
+        processEscapes: true, 
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {  
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, 
+        Macros: { href: "{}" } 
+    },
+    messageStyle: "none"
+    }); 
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        访问量:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        访客数:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
