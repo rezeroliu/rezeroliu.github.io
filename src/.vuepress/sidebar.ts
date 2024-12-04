@@ -17,7 +17,8 @@ export default sidebar({
       children: [
         "leetcode/",
         "machineLearning/",
-        "linux/"
+        "linux/",
+        "programming/"
       ],
     },
   ],
