@@ -13,6 +13,11 @@ export default navbar([
     link: "/timeline/",
   },
   {
+    text: "浮光 · 掠影",
+    icon: "image",
+    link: "/photography/",
+  },
+  {
     text: "关于",
     icon: "user",
     link: "/intro",

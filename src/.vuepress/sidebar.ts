@@ -22,4 +22,11 @@ export default sidebar({
       ],
     },
   ],
+  "/photography/": [
+    {
+      text: "浮光 · 掠影",
+      prefix: "",
+      children: "structure",
+    },
+  ],
 });
